@@ -1,0 +1,64 @@
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 1000;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.taskbar-start {
+  display: flex;
+  align-items: center;
+}
+
+.start-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.start-icon:hover {
+  transform: scale(1.1);
+}
+
+.taskbar-apps {
+  display: flex;
+  gap: 4px;
+}
+
+.taskbar-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.taskbar-icon:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.taskbar-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.taskbar-tray {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #000;
+  font-size: 13px;
+}

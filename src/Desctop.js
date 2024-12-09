@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './css/Desktop.css';
 import Icon from './Icon';
 import Window from './Window';
+import Taskbar from './Taskbar';
 
 function Desktop() {
   const [openWindows, setOpenWindows] = useState([]);
@@ -25,6 +26,7 @@ function Desktop() {
       {openWindows.includes('projects') && <Window title="Projects" onClose={() => handleCloseWindow('projects')} />}
       {openWindows.includes('education') && <Window title="Education" onClose={() => handleCloseWindow('education')} />}
       {openWindows.includes('skills') && <Window title="Skills" onClose={() => handleCloseWindow('skills')} />}
+      <Taskbar openWindows={openWindows} />
     </div>
   );
 }
