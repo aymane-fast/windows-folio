@@ -10,6 +10,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: 800, height: 500 });
   const [prevSize, setPrevSize] = useState(null);
+  const [isMinimizing, setIsMinimizing] = useState(false);
   const windowRef = useRef(null);
 
   const handleMouseDown = (e) => {
@@ -50,6 +51,14 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
     }
   };
 
+  const handleMinimizeClick = () => {
+    setIsMinimizing(true);
+    setTimeout(() => {
+      setIsMinimizing(false);
+      onMinimize();
+    }, 300);
+  };
+
   const renderContent = () => {
     switch (title.toLowerCase()) {
       case 'cv':
@@ -76,7 +85,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
   return (
     <div
       ref={windowRef}
-      className={`window ${isMaximized ? 'maximized' : ''}`}
+      className={`window ${isMaximized ? 'maximized' : ''} ${isMinimizing ? 'minimizing' : ''}`}
       style={windowStyle}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -86,7 +95,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
       <div className="window-header">
         <span>{title}</span>
         <div className="window-controls">
-          <button className="minimize" onClick={onMinimize}>─</button>
+          <button className="minimize" onClick={handleMinimizeClick}>─</button>
           <button className="maximize" onClick={handleMaximize}>
             {isMaximized ? '❐' : '□'}
           </button>

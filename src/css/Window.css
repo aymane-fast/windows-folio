@@ -9,12 +9,18 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   user-select: none;
   overflow: hidden;
-  transition: width 0.2s, height 0.2s;
+  transition: all 0.3s ease-in-out;
+  transform-origin: bottom;
 }
 
 .window.maximized {
   border-radius: 0;
   border: none;
+}
+
+.window.minimizing {
+  transform: scale(0.1) translateY(100vh);
+  opacity: 0;
 }
 
 .window-header {

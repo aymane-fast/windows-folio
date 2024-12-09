@@ -43,7 +43,34 @@
   justify-content: center;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.taskbar-icon.active {
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.taskbar-icon.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: #0078d4;
 }
 
 .taskbar-icon:hover {
@@ -61,4 +88,16 @@
   gap: 16px;
   color: #000;
   font-size: 13px;
+}
+
+.window {
+  /* ... other properties ... */
+  transition: none; /* Remove general transition */
+}
+
+/* Add specific transition only for minimizing animation */
+.window.minimizing {
+  transform: scale(0.1) translateY(100vh);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
