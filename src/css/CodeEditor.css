@@ -1,0 +1,78 @@
+.code-editor {
+    height: 100%;
+    background: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Consolas', 'Courier New', monospace;
+  }
+  
+  .editor-tabs {
+    background: #252526;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid #333;
+  }
+  
+  .tab {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 100%;
+    background: #2d2d2d;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    background: #1e1e1e;
+  }
+  
+  .close-tab {
+    margin-left: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 4px;
+  }
+  
+  .close-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .editor-content {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    padding: 10px 0;
+  }
+  
+  .line-numbers {
+    padding: 0 10px;
+    text-align: right;
+    color: #858585;
+    user-select: none;
+    font-size: 14px;
+  }
+  
+  .code-content {
+    flex: 1;
+    margin: 0;
+    padding: 0 10px;
+    color: #d4d4d4;
+    font-size: 14px;
+  }
+  
+  code {
+    font-family: inherit;
+  }
+  
+  .string { color: #ce9178; }
+  .number { color: #b5cea8; }
+  .boolean { color: #569cd6; }
+  .null { color: #569cd6; }
+  .key { color: #9cdcfe; }

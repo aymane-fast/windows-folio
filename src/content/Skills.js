@@ -1,35 +1,45 @@
 import React from 'react';
-import './Content.css';
+// import '../css/Content.css';
+import '../css/CodeEditor.css'
+import CodeEditor from '../CodeEditor';
 
 function Skills() {
+  const skillsJson = `{
+  "name": "Aymane Bahlouli",
+  "title": "Full Stack Developer",
+  "technicalSkills": {
+    "frontEnd": {
+      "languages": ["HTML5", "CSS3", "JavaScript"],
+      "frameworks": ["React", "Tailwind CSS", "Bootstrap"],
+      "tools": ["Webpack", "Babel"]
+    },
+    "backEnd": {
+      "languages": ["PHP", "Node.js"],
+      "frameworks": ["Laravel"],
+      "databases": ["MySQL", "MongoDB"]
+    },
+    "devOps": {
+      "versionControl": ["Git", "GitHub"],
+      "environments": ["Nix", "Linux"],
+      "tools": ["Docker"]
+    },
+    "softSkills": [
+      "Problem Solving",
+      "Team Collaboration",
+      "Project Management",
+      "Agile Methodology"
+    ]
+  },
+  "currentlyLearning": [
+    "Advanced React Patterns",
+    "System Design",
+    "Cloud Architecture"
+  ]
+}`;
+
   return (
-    <div className="content-container">
-      <h2>Technical Skills</h2>
-      
-      <section>
-        <h3>Web Development</h3>
-        <ul>
-          <li>HTML, CSS, Tailwind CSS, Bootstrap</li>
-          <li>JavaScript, React, Laravel</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Backend Development</h3>
-        <ul>
-          <li>PHP, Node.js</li>
-          <li>API Development</li>
-          <li>MySQL and SQL principles</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Tools & Platforms</h3>
-        <ul>
-          <li>Git/GitHub</li>
-          <li>Nix environment</li>
-        </ul>
-      </section>
+    <div className="content-container code-editor-wrapper">
+      <CodeEditor content={skillsJson} />
     </div>
   );
 }
