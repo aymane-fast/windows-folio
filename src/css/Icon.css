@@ -1,0 +1,10 @@
+.icon {
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon img {
+  width: 64px;
+  height: 64px;
+}

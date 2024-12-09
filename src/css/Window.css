@@ -1,0 +1,23 @@
+.window {
+  width: 400px;
+  height: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.window-header {
+  background: #0078d7;
+  color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-content {
+  padding: 10px;
+}

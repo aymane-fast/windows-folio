@@ -1,0 +1,11 @@
+.desktop {
+  width: 100vw;
+  height: 100vh;
+  background: url('./windows11-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
