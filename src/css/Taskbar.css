@@ -19,14 +19,34 @@
   align-items: center;
 }
 
-.start-icon {
-  width: 24px;
-  height: 24px;
+.start-button {
+  background: transparent;
+  border: none;
+  padding: 0;
   cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s;
 }
 
-.start-icon:hover {
+.start-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.start-button.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.start-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s;
+}
+
+.start-button:hover .start-icon {
   transform: scale(1.1);
 }
 

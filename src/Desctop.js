@@ -22,6 +22,10 @@ function Desktop() {
     }
   };
 
+  const handleAppClick = (type) => {
+    handleIconDoubleClick(type);
+  };
+
   const handleClose = (id) => {
     setWindows(windows.filter(w => w.id !== id));
   };
@@ -73,6 +77,7 @@ function Desktop() {
       <Taskbar 
         windows={windows}
         onTaskbarClick={handleTaskbarClick}
+        onAppClick={handleAppClick}
       />
     </div>
   );
