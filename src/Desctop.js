@@ -5,14 +5,49 @@ import Window from './Window';
 import Taskbar from './Taskbar';
 
 function Desktop() {
-  const [openWindows, setOpenWindows] = useState([]);
+  const [windows, setWindows] = useState([]);
 
   const handleIconDoubleClick = (type) => {
-    setOpenWindows([...openWindows, type]);
+    if (!windows.find(w => w.id === type)) {
+      setWindows([...windows, { 
+        id: type,
+        isMinimized: false,
+        isMaximized: false
+      }]);
+    } else {
+      // If window exists, unminimize it
+      setWindows(windows.map(w => 
+        w.id === type ? { ...w, isMinimized: false } : w
+      ));
+    }
   };
 
-  const handleCloseWindow = (type) => {
-    setOpenWindows(openWindows.filter(window => window !== type));
+  const handleClose = (id) => {
+    setWindows(windows.filter(w => w.id !== id));
+  };
+
+  const handleMinimize = (id) => {
+    setWindows(windows.map(w => 
+      w.id === id ? { ...w, isMinimized: true } : w
+    ));
+  };
+
+  const handleMaximize = (id) => {
+    setWindows(windows.map(w => 
+      w.id === id ? { ...w, isMaximized: true } : w
+    ));
+  };
+
+  const handleRestore = (id) => {
+    setWindows(windows.map(w => 
+      w.id === id ? { ...w, isMaximized: false } : w
+    ));
+  };
+
+  const handleTaskbarClick = (id) => {
+    setWindows(windows.map(w => 
+      w.id === id ? { ...w, isMinimized: !w.isMinimized } : w
+    ));
   };
 
   return (
@@ -22,11 +57,23 @@ function Desktop() {
       <Icon name="Skills" onDoubleClick={() => handleIconDoubleClick('skills')} />
       <Icon name="Education" onDoubleClick={() => handleIconDoubleClick('education')} />
 
-      {openWindows.includes('cv') && <Window title="CV" onClose={() => handleCloseWindow('cv')} />}
-      {openWindows.includes('projects') && <Window title="Projects" onClose={() => handleCloseWindow('projects')} />}
-      {openWindows.includes('education') && <Window title="Education" onClose={() => handleCloseWindow('education')} />}
-      {openWindows.includes('skills') && <Window title="Skills" onClose={() => handleCloseWindow('skills')} />}
-      <Taskbar openWindows={openWindows} />
+      {windows.map(({ id, isMinimized, isMaximized }) => (
+        <Window
+          key={id}
+          title={id}
+          isMinimized={isMinimized}
+          isMaximized={isMaximized}
+          onClose={() => handleClose(id)}
+          onMinimize={() => handleMinimize(id)}
+          onMaximize={() => handleMaximize(id)}
+          onRestore={() => handleRestore(id)}
+        />
+      ))}
+      
+      <Taskbar 
+        windows={windows}
+        onTaskbarClick={handleTaskbarClick}
+      />
     </div>
   );
 }

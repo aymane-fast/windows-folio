@@ -3,14 +3,17 @@ import './css/Window.css';
 import CV from './content/CV';
 import Skills from './content/Skills';
 
-function Window({ title, onClose }) {
+function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore, isMaximized }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
+  const [prevPosition, setPrevPosition] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [size, setSize] = useState({ width: 800, height: 500 });
+  const [prevSize, setPrevSize] = useState(null);
   const windowRef = useRef(null);
 
   const handleMouseDown = (e) => {
-    if (e.target.closest('.window-header')) {
+    if (e.target.closest('.window-header') && !e.target.closest('.window-controls')) {
       setIsDragging(true);
       const rect = windowRef.current.getBoundingClientRect();
       setDragOffset({
@@ -21,7 +24,7 @@ function Window({ title, onClose }) {
   };
 
   const handleMouseMove = (e) => {
-    if (isDragging) {
+    if (isDragging && !isMaximized) {
       setPosition({
         x: e.clientX - dragOffset.x,
         y: e.clientY - dragOffset.y
@@ -31,6 +34,20 @@ function Window({ title, onClose }) {
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  const handleMaximize = () => {
+    if (!isMaximized) {
+      setPrevPosition(position);
+      setPrevSize(size);
+      setPosition({ x: 0, y: 0 });
+      setSize({ width: window.innerWidth, height: window.innerHeight - 48 });
+      onMaximize();
+    } else {
+      setPosition(prevPosition);
+      setSize(prevSize);
+      onRestore();
+    }
   };
 
   const renderContent = () => {
@@ -48,14 +65,19 @@ function Window({ title, onClose }) {
     }
   };
 
+  const windowStyle = {
+    left: `${position.x}px`,
+    top: `${position.y}px`,
+    width: isMaximized ? '100%' : `${size.width}px`,
+    height: isMaximized ? `calc(100vh - 48px)` : `${size.height}px`,
+    display: isMinimized ? 'none' : 'block'
+  };
+
   return (
     <div
       ref={windowRef}
-      className="window"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`
-      }}
+      className={`window ${isMaximized ? 'maximized' : ''}`}
+      style={windowStyle}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -63,7 +85,13 @@ function Window({ title, onClose }) {
     >
       <div className="window-header">
         <span>{title}</span>
-        <button onClick={onClose}>X</button>
+        <div className="window-controls">
+          <button className="minimize" onClick={onMinimize}>─</button>
+          <button className="maximize" onClick={handleMaximize}>
+            {isMaximized ? '❐' : '□'}
+          </button>
+          <button className="close" onClick={onClose}>×</button>
+        </div>
       </div>
       <div className="window-content">
         {renderContent()}

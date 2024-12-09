@@ -1,16 +1,20 @@
 import React from 'react';
 import './css/Taskbar.css';
 
-function Taskbar({ openWindows }) {
+function Taskbar({ windows, onTaskbarClick }) {
   return (
     <div className="taskbar">
       <div className="taskbar-start">
         <img src="./icons/windows.png" alt="Start" className="start-icon" />
       </div>
       <div className="taskbar-apps">
-        {openWindows.map((window, index) => (
-          <div key={index} className="taskbar-icon">
-            <img src={`./icons/${window.toLowerCase()}.png`} alt={window} />
+        {windows.map((window) => (
+          <div 
+            key={window.id} 
+            className={`taskbar-icon ${!window.isMinimized ? 'active' : ''}`}
+            onClick={() => onTaskbarClick(window.id)}
+          >
+            <img src={`./icons/${window.id.toLowerCase()}.png`} alt={window.id} />
           </div>
         ))}
       </div>
