@@ -5,50 +5,36 @@ import Skills from './content/Skills';
 
 function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore, isMaximized }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
-  const [prevPosition, setPrevPosition] = useState(null);
+  const [size, setSize] = useState({ width: 800, height: 600 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [size, setSize] = useState({ width: 800, height: 500 });
-  const [prevSize, setPrevSize] = useState(null);
   const [isMinimizing, setIsMinimizing] = useState(false);
   const windowRef = useRef(null);
 
   const handleMouseDown = (e) => {
-    if (e.target.closest('.window-header') && !e.target.closest('.window-controls')) {
-      setIsDragging(true);
-      const rect = windowRef.current.getBoundingClientRect();
-      setDragOffset({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      });
-    }
+    if (e.target.closest('.window-controls')) return;
+    setIsDragging(true);
+    const rect = windowRef.current.getBoundingClientRect();
+    setDragOffset({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
   };
 
   const handleMouseMove = (e) => {
-    if (isDragging && !isMaximized) {
-      setPosition({
-        x: e.clientX - dragOffset.x,
-        y: e.clientY - dragOffset.y
-      });
-    }
+    if (!isDragging || isMaximized) return;
+    
+    const newX = e.clientX - dragOffset.x;
+    const newY = e.clientY - dragOffset.y;
+    
+    setPosition({
+      x: Math.max(0, newX),
+      y: Math.max(0, newY)
+    });
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
-  };
-
-  const handleMaximize = () => {
-    if (!isMaximized) {
-      setPrevPosition(position);
-      setPrevSize(size);
-      setPosition({ x: 0, y: 0 });
-      setSize({ width: window.innerWidth, height: window.innerHeight - 48 });
-      onMaximize();
-    } else {
-      setPosition(prevPosition);
-      setSize(prevSize);
-      onRestore();
-    }
   };
 
   const handleMinimizeClick = () => {
@@ -57,6 +43,14 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
       setIsMinimizing(false);
       onMinimize();
     }, 300);
+  };
+
+  const handleMaximize = () => {
+    if (isMaximized) {
+      onRestore();
+    } else {
+      onMaximize();
+    }
   };
 
   const renderContent = () => {

@@ -15,7 +15,6 @@ function Desktop() {
         isMaximized: false
       }]);
     } else {
-      // If window exists, unminimize it
       setWindows(windows.map(w => 
         w.id === type ? { ...w, isMinimized: false } : w
       ));
@@ -38,7 +37,7 @@ function Desktop() {
 
   const handleMaximize = (id) => {
     setWindows(windows.map(w => 
-      w.id === id ? { ...w, isMaximized: true } : w
+      w.id === id ? { ...w, isMaximized: !w.isMaximized } : w
     ));
   };
 
@@ -64,6 +63,7 @@ function Desktop() {
       {windows.map(({ id, isMinimized, isMaximized }) => (
         <Window
           key={id}
+          id={id}
           title={id}
           isMinimized={isMinimized}
           isMaximized={isMaximized}
