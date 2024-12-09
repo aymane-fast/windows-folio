@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './css/Window.css';
+import CV from './content/CV';
+import Skills from './content/Skills';
 
 function Window({ title, onClose }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
@@ -31,6 +33,21 @@ function Window({ title, onClose }) {
     setIsDragging(false);
   };
 
+  const renderContent = () => {
+    switch (title.toLowerCase()) {
+      case 'cv':
+        return <CV />;
+      case 'skills':
+        return <Skills />;
+      case 'projects':
+        return <div>Projects content coming soon...</div>;
+      case 'education':
+        return <div>Education content coming soon...</div>;
+      default:
+        return <div>Content not found</div>;
+    }
+  };
+
   return (
     <div
       ref={windowRef}
@@ -49,7 +66,7 @@ function Window({ title, onClose }) {
         <button onClick={onClose}>X</button>
       </div>
       <div className="window-content">
-        {/* Window content */}
+        {renderContent()}
       </div>
     </div>
   );

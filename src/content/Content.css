@@ -1,0 +1,56 @@
+.content-container {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.content-container h1 {
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.content-container h2 {
+  color: #0078d4;
+  margin: 20px 0 10px 0;
+  font-size: 20px;
+}
+
+.content-container h3 {
+  color: #444;
+  margin: 15px 0 8px 0;
+  font-size: 16px;
+}
+
+.content-container section {
+  margin-bottom: 25px;
+}
+
+.content-container ul {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.content-container ul li {
+  margin-bottom: 8px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.content-container ul li:before {
+  content: "•";
+  color: #0078d4;
+  position: absolute;
+  left: -15px;
+}
+
+.contact-info {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.experience-item {
+  margin-bottom: 20px;
+}
