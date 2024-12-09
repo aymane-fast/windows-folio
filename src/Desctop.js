@@ -18,13 +18,13 @@ function Desktop() {
     <div className="desktop">
       <Icon name="Projects" onDoubleClick={() => handleIconDoubleClick('projects')} />
       <Icon name="CV" onDoubleClick={() => handleIconDoubleClick('cv')} />
-      <Icon name="Technical Skills" onDoubleClick={() => handleIconDoubleClick('skills')} />
+      <Icon name="Skills" onDoubleClick={() => handleIconDoubleClick('skills')} />
       <Icon name="Education" onDoubleClick={() => handleIconDoubleClick('education')} />
 
       {openWindows.includes('cv') && <Window title="CV" onClose={() => handleCloseWindow('cv')} />}
       {openWindows.includes('projects') && <Window title="Projects" onClose={() => handleCloseWindow('projects')} />}
       {openWindows.includes('education') && <Window title="Education" onClose={() => handleCloseWindow('education')} />}
-      {openWindows.includes('skills') && <Window title="Technical Skills" onClose={() => handleCloseWindow('skills')} />}
+      {openWindows.includes('skills') && <Window title="Skills" onClose={() => handleCloseWindow('skills')} />}
     </div>
   );
 }
