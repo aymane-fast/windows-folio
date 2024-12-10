@@ -1,0 +1,105 @@
+.cv-container {
+  background: #ffffff;
+  min-height: 100%;
+  padding: 2rem;
+  color: #2c3e50;
+}
+
+.cv-header-section {
+  background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cv-profile {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0078d4;
+}
+
+.profile-info h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.profile-info h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.cv-main {
+  display: grid;
+  gap: 2rem;
+}
+
+.cv-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cv-section h3 {
+  color: #0078d4;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.experience-card {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.experience-header h4 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.experience-header span {
+  font-size: 0.9rem;
+  color: #666;
+}
