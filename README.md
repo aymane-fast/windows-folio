@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Windows 11 Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A creative portfolio website that mimics the Windows 11 interface, featuring a VS Code-inspired viewer for displaying projects and information.
 
-## Available Scripts
+## 🌟 Live Demo
+[Live Demo Link](https://windows-folio.vercel.app/) <!-- Add your deployed site link here -->
 
-In the project directory, you can run:
+## 📸 Preview
+![Portfolio Preview](public/preview.png) <!-- Add a screenshot of your portfolio -->
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Windows 11-inspired interface
+- Interactive desktop environment
+- VS Code-style project viewer
+- PDF Resume viewer
+- Taskbar functionality
+- Start menu
+- Window management (minimize, maximize, close)
+- Draggable windows
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Built With
 
-### `npm test`
+- React.js
+- Tailwind CSS
+- React Draggable
+- React Syntax Highlighter
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏗️ Installation
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+```sh
+git clone https://github.com/aymane-fast/windows-folio.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+```sh
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
+```sh
+npm start
+```
 
-### `npm run eject`
+4. Build for production:
+```sh
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🎨 Customization
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Replace `/public/resume.pdf` with your own CV
+2. Update content in `src/content/` directory
+3. Modify icons in `public/icons/` directory
+4. Adjust themes in `src/contexts/ThemeContext.jsx`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🤝 Credits
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- VS Code wonderful interface clone developed by this  guy [Ayman Faik](https://github.com/aymanbest)
+- Thank you to [Ayman Faik](https://github.com/aymanbest) for the  VS Code interface clone wont be possible without him
+- Windows 11 design inspiration from Microsoft
 
-## Learn More
+## 📝 License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is under a Modified MIT License:
+- ✅ Free to use, modify, and distribute
+- ✅ Can be used in private and commercial projects
+- ✅ No attribution needed for personal/non-commercial use
+- ℹ️ Commercial use requires attribution and link to original repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+See the [LICENSE](LICENSE) file for details.
 
-### Code Splitting
+VS Code interface clone credit: [Ayman Faik](https://github.com/aymanbest)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 👤 Author
 
-### Analyzing the Bundle Size
+**Your Name**
+- GitHub: [https://github.com/aymane-fast](#)
+- LinkedIn: [https://www.linkedin.com/in/aymane-bahlouli-1220692a4/](#)
+<!-- - Portfolio: [Your Portfolio](#) -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🤝 Contributing
 
-### Making a Progressive Web App
+Contributions, issues, and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Advanced Configuration
+## ⭐️ Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Give a ⭐️ if you like this project!
 
-### Deployment
+## 📞 Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+For any questions or inquiries, please reach out to:
+- Email: [aymanebahlouli@gmail.com](#)
 
-### `npm run build` fails to minify
+<!-- ## 🔮 Future Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ ] Terminal emulator
+- [ ] File explorer functionality
+- [ ] Theme customization
+- [ ] More interactive desktop widgets
+- [ ] Mobile responsive design
+
+## 🐛 Known Issues
+
+Please check the [issues page](issues/) for any reported bugs or feature requests.
+
+## 📄 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes and updates. -->
