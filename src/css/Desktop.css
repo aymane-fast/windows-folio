@@ -8,4 +8,15 @@
   grid-gap: 20px;
   padding: 20px;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    grid-template-columns: 1fr;  /* Single column for mobile */
+    grid-gap: 10px;
+    padding: 10px;
+    align-content: start;  /* Start from top */
+    overflow-y: auto;  /* Allow scrolling */
+  }
 }

@@ -8,14 +8,22 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const [size, setSize] = useState({ width: 800, height: 600 });
   const windowRef = useRef(null);
+  const isMobile = window.innerWidth <= 768;
 
   const handleDrag = (e, data) => {
-    if (!isMaximized) {
+    if (!isMaximized && !isMobile) {
       setPosition({ x: data.x, y: data.y });
     }
   };
 
-  const windowStyle = isMaximized ? {
+  const windowStyle = isMobile ? {
+    position: 'fixed',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: `calc(100vh - 48px)`,
+    display: isMinimized ? 'none' : 'block',
+  } : isMaximized ? {
     position: 'absolute',
     left: 0,
     top: 0,
@@ -48,8 +56,8 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
     <Draggable
       nodeRef={windowRef}
       handle=".window-header"
-      disabled={isMaximized}
-      position={isMaximized ? { x: 0, y: 0 } : position}
+      disabled={isMaximized || isMobile}
+      position={isMaximized || isMobile ? { x: 0, y: 0 } : position}
       onDrag={handleDrag}
       bounds="parent"
       defaultPosition={{ x: 50, y: 50 }}

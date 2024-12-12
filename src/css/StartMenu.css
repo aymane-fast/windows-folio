@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: transparent;
-  z-index: 998;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1001;
 }
 
 .start-menu {
@@ -19,12 +19,51 @@
   backdrop-filter: blur(20px);
   border-radius: 8px;
   padding: 20px;
-  z-index: 999;
+  z-index: 1002;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   gap: 20px;
   animation: slideUp 0.3s ease-out;
+}
+
+@media (max-width: 768px) {
+  .start-menu {
+    width: 100%;
+    height: calc(100vh - 48px);
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    transform: none;
+    border-radius: 0;
+    padding: 10px;
+    z-index: 1002;
+  }
+
+  .apps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .app-item {
+    padding: 8px;
+  }
+
+  .app-item img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .search-bar input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .pinned-apps h3 {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
 }
 
 @keyframes slideUp {
@@ -34,6 +73,17 @@
   }
   to {
     transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes mobileSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }

@@ -15,6 +15,28 @@
   transform: translate3d(0, 0, 0);
 }
 
+@media (max-width: 768px) {
+  .window {
+    width: 100% !important;
+    height: calc(100vh - 48px) !important;
+    border-radius: 0;
+    transform: none !important;
+  }
+
+  .window-header {
+    padding: 4px 8px;
+  }
+
+  .window-controls button {
+    width: 40px;
+    height: 28px;
+  }
+
+  .window-content {
+    height: calc(100% - 36px);
+  }
+}
+
 .window.maximized {
   border-radius: 0;
   border: none;
