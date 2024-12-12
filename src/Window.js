@@ -99,7 +99,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      {!isVSCode && (
+       
         <div className="window-header">
           <span>{title}</span>
           <div className="window-controls">
@@ -110,7 +110,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
             <button className="close" onClick={onClose}>×</button>
           </div>
         </div>
-      )}
+      
       <div className={isVSCode ? '' : 'window-content'}>
         {renderContent()}
       </div>
