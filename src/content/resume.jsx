@@ -4,50 +4,56 @@ import React from 'react';
 function Resume() {
   const experience = [
     {
-      company: "Tech Solutions Inc.",
-      role: "Senior Frontend Developer",
-      period: "2021 - Present",
+      company: "Université Ibn Tofail",
+      role: "Web Development Intern",
+      period: "March - April 2024",
       achievements: [
-        "Led team of 5 developers in rebuilding company's main product",
-        "Improved application performance by 40%",
-        "Implemented CI/CD pipeline reducing deployment time by 60%"
+        "Developed a Room Reservation Management System with a user-friendly interface.",
+        "Implemented complete traceability for bookings, modifications, and deletions.",
+        "Created an administrative dashboard for efficient management of users and reservations."
       ]
     },
     {
-      company: "StartupXYZ",
-      role: "Full Stack Developer",
-      period: "2019 - 2021",
-      achievements: [
-        "Built scalable backend services using Node.js and MongoDB",
-        "Developed responsive frontend using React and Redux",
-        "Mentored junior developers"
-      ]
-    }
+    company: "Zoom In Media",
+    role: "Web Development Intern",
+    period: "October - Novembre 2024",
+    achievements: [
+      "Designed the initial UI/UX for a Hajj and Umrah booking app.",
+      "Transitioned to the backend team to develop various API endpoints using Laravel.",
+      "Worked on functionalities for managing clients, hotels, destinations, and transports.",
+      "Gained hands-on experience in API development and backend architecture."
+  ]
+}
+
   ];
 
   const education = {
-    degree: "B.S. Computer Science",
-    school: "Tech University",
-    year: "2019",
-    gpa: "3.8/4.0",
+    degree: "Technicien Spécialisé en Développement Digital",
+    school: "ISTA Maamora Kénitra",
+    year: "2022 - 2024",
     courses: [
-      "Advanced Web Development",
-      "Cloud Computing",
-      "Data Structures",
-      "Algorithms"
+      "Web Development",
+      "Database Management",
+      "Software Engineering",
+      "UI/UX Design"
     ]
   };
 
   const certifications = [
     {
-      name: "AWS Certified Developer",
-      issuer: "Amazon Web Services",
-      year: "2022"
+      name: "PCAP: Programming Essentials in Python",
+      issuer: "Python Institute",
+      year: "2023"
     },
     {
-      name: "Professional React Developer",
-      issuer: "Meta",
-      year: "2021"
+      name: "French Language Certification (B1)",
+      issuer: "Alliance Française",
+      year: "2023"
+    },
+    {
+      name: "English Language Certification (C1)",
+      issuer: "British Council",
+      year: "2023"
     }
   ];
 
@@ -77,7 +83,6 @@ function Resume() {
         <div>
           <h3>{education.degree}</h3>
           <p>{education.school} - {education.year}</p>
-          <p>GPA: {education.gpa}</p>
           <h4>Relevant Coursework:</h4>
           <ul>
             {education.courses.map(course => (
