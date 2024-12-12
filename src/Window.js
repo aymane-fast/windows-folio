@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import './css/Window.css';
 import CV from './content/CV';
 import Skills from './content/Skills';
+import VSCodeWindow from './components/VSCodeWindow';
 
 function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore, isMaximized }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
@@ -58,7 +59,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
       case 'cv':
         return <CV />;
       case 'skills':
-        return <Skills />;
+        return <VSCodeWindow />;
       case 'projects':
         return <div>Projects content coming soon...</div>;
       case 'education':
@@ -69,34 +70,48 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
   };
 
   const windowStyle = {
+    position: 'absolute',
     left: `${position.x}px`,
     top: `${position.y}px`,
     width: isMaximized ? '100%' : `${size.width}px`,
     height: isMaximized ? `calc(100vh - 48px)` : `${size.height}px`,
-    display: isMinimized ? 'none' : 'block'
+    display: isMinimized ? 'none' : 'block',
   };
+
+  const isVSCode = title.toLowerCase() === 'skills';
+  const finalWindowStyle = isVSCode ? {
+    ...windowStyle,
+    background: 'none',
+    border: 'none',
+    boxShadow: 'none',
+    borderRadius: 0,
+    padding: 0,
+    overflow: 'hidden'
+  } : windowStyle;
 
   return (
     <div
       ref={windowRef}
-      className={`window ${isMaximized ? 'maximized' : ''} ${isMinimizing ? 'minimizing' : ''}`}
-      style={windowStyle}
+      className={`window ${isMaximized ? 'maximized' : ''} ${isMinimizing ? 'minimizing' : ''} ${isVSCode ? 'vs-code-override' : ''}`}
+      style={finalWindowStyle}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <div className="window-header">
-        <span>{title}</span>
-        <div className="window-controls">
-          <button className="minimize" onClick={handleMinimizeClick}>─</button>
-          <button className="maximize" onClick={handleMaximize}>
-            {isMaximized ? '❐' : '□'}
-          </button>
-          <button className="close" onClick={onClose}>×</button>
+      {!isVSCode && (
+        <div className="window-header">
+          <span>{title}</span>
+          <div className="window-controls">
+            <button className="minimize" onClick={handleMinimizeClick}>─</button>
+            <button className="maximize" onClick={handleMaximize}>
+              {isMaximized ? '❐' : '□'}
+            </button>
+            <button className="close" onClick={onClose}>×</button>
+          </div>
         </div>
-      </div>
-      <div className="window-content">
+      )}
+      <div className={isVSCode ? '' : 'window-content'}>
         {renderContent()}
       </div>
     </div>

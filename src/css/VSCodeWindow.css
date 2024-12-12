@@ -1,0 +1,14 @@
+.vs-code-window {
+  height: 100%;
+  background-color: #1e1e1e;
+  color: #cccccc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.vs-code-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+} 

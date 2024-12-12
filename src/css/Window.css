@@ -97,3 +97,41 @@
   overflow: auto;
   background: rgba(255, 255, 255, 0.95);
 }
+
+.vs-code-header {
+  background: #1e1e1e !important;
+  color: #cccccc !important;
+  border-bottom: 1px solid #333;
+}
+
+.vs-code-header .window-controls button {
+  color: #cccccc !important;
+}
+
+.vs-code-header .window-controls button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.vs-code-header .window-controls button.close:hover {
+  background: #e81123 !important;
+}
+
+.vs-code-content {
+  padding: 0 !important;
+  background: #1e1e1e !important;
+  height: calc(100% - 32px) !important;
+}
+
+.vs-code-override {
+  background: none !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.vs-code-override .window-content {
+  padding: 0 !important;
+  background: none !important;
+  height: 100% !important;
+}
