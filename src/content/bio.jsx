@@ -3,26 +3,27 @@ import React from 'react';
 
 function Bio() {
   const personalInfo = {
-    name: "John Doe",
+    name: "Aymane Bahlouli",
     role: "Full Stack Developer",
-    location: "San Francisco, CA",
+    location: "Kénitra, Morocco",
     about: \`
-      Passionate developer with 5 years of experience in building
-      modern web applications. Specializing in React, Node.js,
-      and cloud architecture.
+      Dedicated and detail-oriented developer with hands-on experience in
+      building dynamic web applications and intuitive user interfaces.
+      Specializing in React, Laravel, and crafting efficient solutions
+      for businesses.
     \`,
     interests: [
-      "Open Source Development",
+      "Web Development",
+      "Digital Marketing",
       "UI/UX Design",
-      "Cloud Computing",
-      "Machine Learning"
+      "Open Source Projects"
     ]
   };
 
   const skills = {
-    frontend: ["React", "TypeScript", "Tailwind CSS"],
-    backend: ["Node.js", "Python", "PostgreSQL"],
-    tools: ["Git", "Docker", "AWS"]
+    frontend: ["React", "JavaScript", "Bootstrap", "Tailwind CSS"],
+    backend: ["Laravel", "PHP", "MySQL"],
+    tools: ["Git", "Figma", "Photoshop"]
   };
 
   return (
