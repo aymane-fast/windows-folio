@@ -9,11 +9,11 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
   const [size, setSize] = useState({ width: 800, height: 600 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [isMinimizing, setIsMinimizing] = useState(false);
   const windowRef = useRef(null);
 
   const handleMouseDown = (e) => {
     if (e.target.closest('.window-controls')) return;
+    if (isMaximized) return; // Prevent dragging when maximized
     setIsDragging(true);
     const rect = windowRef.current.getBoundingClientRect();
     setDragOffset({
@@ -36,14 +36,6 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
 
   const handleMouseUp = () => {
     setIsDragging(false);
-  };
-
-  const handleMinimizeClick = () => {
-    setIsMinimizing(true);
-    setTimeout(() => {
-      setIsMinimizing(false);
-      onMinimize();
-    }, 300);
   };
 
   const handleMaximize = () => {
@@ -69,31 +61,27 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
     }
   };
 
-  const windowStyle = {
+  const windowStyle = isMaximized ? {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: `calc(100vh - 48px)`,
+    display: isMinimized ? 'none' : 'block',
+  } : {
     position: 'absolute',
     left: `${position.x}px`,
     top: `${position.y}px`,
-    width: isMaximized ? '100%' : `${size.width}px`,
-    height: isMaximized ? `calc(100vh - 48px)` : `${size.height}px`,
+    width: `${size.width}px`,
+    height: `${size.height}px`,
     display: isMinimized ? 'none' : 'block',
   };
-
-  const isVSCode = title.toLowerCase() === 'skills';
-  const finalWindowStyle = isVSCode ? {
-    ...windowStyle,
-    background: 'none',
-    border: 'none',
-    boxShadow: 'none',
-    borderRadius: 0,
-    padding: 0,
-    overflow: 'hidden'
-  } : windowStyle;
 
   return (
     <div
       ref={windowRef}
-      className={`window ${isMaximized ? 'maximized' : ''} ${isMinimizing ? 'minimizing' : ''} ${isVSCode ? 'vs-code-override' : ''}`}
-      style={finalWindowStyle}
+      className={`window ${isMaximized ? 'maximized' : ''}`}
+      style={windowStyle}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -103,7 +91,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
         <div className="window-header">
           <span>{title}</span>
           <div className="window-controls">
-            <button className="minimize" onClick={handleMinimizeClick}>─</button>
+            <button className="minimize" onClick={handleMaximize}>─</button>
             <button className="maximize" onClick={handleMaximize}>
               {isMaximized ? '❐' : '□'}
             </button>
@@ -111,7 +99,7 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
           </div>
         </div>
       
-      <div className={isVSCode ? '' : 'window-content'}>
+      <div className="window-content">
         {renderContent()}
       </div>
     </div>
