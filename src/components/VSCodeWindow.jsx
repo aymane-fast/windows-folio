@@ -19,7 +19,7 @@ function VSCodeWindow() {
   return (
     <ThemeProvider>
       <WindowProvider>
-        <div className="h-full flex flex-col bg-[#1e1e1e] text-[#cccccc]">
+        <div className="h-full flex flex-col bg-[#1e1e1e] text-[#cccccc] overflow-hidden">
           <MenuBar 
             activeMenu={activeMenu}
             setActiveMenu={setActiveMenu}
@@ -32,7 +32,7 @@ function VSCodeWindow() {
               sidebarWidth={sidebarWidths[sidebarView]}
               onWidthChange={(width) => updateSidebarWidth(sidebarView, width)}
             />
-            <div className="flex-1">
+            <div className="flex-1 overflow-hidden">
               <WindowManager />
             </div>
           </div>

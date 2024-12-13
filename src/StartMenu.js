@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/StartMenu.css';
 
 function StartMenu({ isOpen, onClose, onAppClick }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const apps = [
     { id: 'projects', name: 'Projects', icon: './icons/projects.png' },
@@ -25,7 +35,7 @@ function StartMenu({ isOpen, onClose, onAppClick }) {
   return (
     <>
       <div className="start-menu-overlay" onClick={onClose} />
-      <div className="start-menu">
+      <div className={`start-menu ${isMobile ? 'mobile' : ''}`}>
         <div className="search-bar">
           <input
             type="text"

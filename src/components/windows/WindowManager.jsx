@@ -26,14 +26,14 @@ export default function WindowManager() {
   }
 
   return (
-    <div className="flex-1 flex flex-col bg-[#1e1e1e]">
+    <div className="h-full flex flex-col bg-[#1e1e1e] overflow-hidden">
       <TabsBar />
-      <div className="flex-1 relative">
+      <div className="flex-1 overflow-hidden">
         {windows.length > 0 ? (
           windows.map(window => (
             <div
               key={window.id}
-              className={`absolute ${
+              className={`h-full ${
                 window.id === activeWindow ? 'block' : 'hidden'
               }`}
             >

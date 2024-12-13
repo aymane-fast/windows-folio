@@ -13,7 +13,6 @@ function CodeDisplay({ content }) {
     const range = selection.getRangeAt(0);
     const preContent = range.startContainer.textContent;
     
-    // Calculate line and column
     const textUntilCursor = preContent?.substring(0, range.startOffset) || '';
     const lines = textUntilCursor.split('\n');
     const line = lines.length;
@@ -23,10 +22,8 @@ function CodeDisplay({ content }) {
   };
 
   return (
-    // Make sure parent takes full height and allows overflow
-    <div className="h-full w-full"> 
-      {/* Add overflow container with specific height */}
-      <div className="h-full overflow-y-auto">
+    <div className="h-full w-full overflow-hidden">
+      <div className="h-full overflow-auto">
         <SyntaxHighlighter
           language="jsx"
           style={vscDarkPlus}
@@ -36,9 +33,8 @@ function CodeDisplay({ content }) {
             background: '#1e1e1e',
             fontSize: '14px',
             lineHeight: '1.6rem',
-            height: 'auto', // Allow content to determine height
-            minHeight: '100%',
-            maxHeight: 'none'
+            height: '100%',
+            minHeight: '100%'
           }}
           showLineNumbers={true}
           wrapLines={true}
