@@ -10,7 +10,7 @@
 }
 
 /* Create invisible grid lines for snapping */
-.desktop::before {
+/* .desktop::before {
   content: '';
   position: absolute;
   top: 0;
@@ -21,7 +21,7 @@
                     linear-gradient(to bottom, transparent 79px, rgba(255,255,255,0.1) 80px);
   background-size: 80px 80px;
   pointer-events: none;
-}
+} */
 
 @media (max-width: 768px) {
   .desktop {
