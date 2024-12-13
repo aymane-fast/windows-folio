@@ -6,6 +6,13 @@ import Taskbar from './Taskbar';
 
 function Desktop() {
   const [windows, setWindows] = useState([]);
+  
+  const icons = [
+    { id: 'projects', name: 'Projects', initialPos: { x: 0, y: 0 } },
+    { id: 'cv', name: 'CV', initialPos: { x: 0, y: 100 } },
+    { id: 'skills', name: 'Skills', initialPos: { x: 0, y: 200 } },
+    { id: 'education', name: 'Education', initialPos: { x: 0, y: 300 } }
+  ];
 
   const handleIconDoubleClick = (type) => {
     if (!windows.find(w => w.id === type)) {
@@ -55,10 +62,14 @@ function Desktop() {
 
   return (
     <div className="desktop">
-      <Icon name="Projects" onDoubleClick={() => handleIconDoubleClick('projects')} />
-      <Icon name="CV" onDoubleClick={() => handleIconDoubleClick('cv')} />
-      <Icon name="Skills" onDoubleClick={() => handleIconDoubleClick('skills')} />
-      <Icon name="Education" onDoubleClick={() => handleIconDoubleClick('education')} />
+      {icons.map(icon => (
+        <Icon 
+          key={icon.id}
+          name={icon.name}
+          initialPosition={icon.initialPos}
+          onDoubleClick={() => handleIconDoubleClick(icon.id)}
+        />
+      ))}
 
       {windows.map(({ id, isMinimized, isMaximized }) => (
         <Window

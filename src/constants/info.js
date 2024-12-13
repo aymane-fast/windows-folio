@@ -1,12 +1,12 @@
 export const githubInfo = {
-    username: 'johndoe',
-    authUrl: 'https://github.com/aymanbest',
+    username: 'aymane-fast',
+    authUrl: 'https://github.com/aymane-fast',
     repositories: [
       {
         name: 'portfolio',
         description: 'My personal portfolio website',
-        stars: 12,
-        forks: 5
+        stars: 8,
+        forks: 1 
       },
     ]
   };

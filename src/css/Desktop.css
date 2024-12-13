@@ -9,6 +9,7 @@
   padding: 20px;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
 }
 
 @media (max-width: 768px) {
