@@ -6,10 +6,13 @@ function Icon({ name, onDoubleClick, initialPosition = { x: 0, y: 0 } }) {
   const [isDragging, setIsDragging] = useState(false);
   const iconRef = useRef(null);
   const dragStartPos = useRef({ x: 0, y: 0 });
-  const gridSize = 80;
+  const gridSize = {
+    x: 100,  // Wider horizontal grid
+    y: 80    // Keep vertical grid as is
+  };
 
   const handleMouseDown = (e) => {
-    if (e.button !== 0) return; // Only left click
+    if (e.button !== 0) return;
     setIsDragging(true);
     dragStartPos.current = {
       x: e.clientX - position.x,
@@ -24,9 +27,8 @@ function Icon({ name, onDoubleClick, initialPosition = { x: 0, y: 0 } }) {
     const newX = e.clientX - dragStartPos.current.x;
     const newY = e.clientY - dragStartPos.current.y;
     
-    // Constrain to desktop bounds
-    const boundedX = Math.max(0, Math.min(newX, window.innerWidth - gridSize));
-    const boundedY = Math.max(0, Math.min(newY, window.innerHeight - 48 - gridSize));
+    const boundedX = Math.max(0, Math.min(newX, window.innerWidth - gridSize.x));
+    const boundedY = Math.max(0, Math.min(newY, window.innerHeight - 48 - gridSize.y));
     
     setPosition({ x: boundedX, y: boundedY });
   };
@@ -34,10 +36,10 @@ function Icon({ name, onDoubleClick, initialPosition = { x: 0, y: 0 } }) {
   const handleMouseUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    // Snap to grid
+    // Snap to different grid sizes for x and y
     setPosition(prev => ({
-      x: Math.round(prev.x / gridSize) * gridSize,
-      y: Math.round(prev.y / gridSize) * gridSize
+      x: Math.round(prev.x / gridSize.x) * gridSize.x,
+      y: Math.round(prev.y / gridSize.y) * gridSize.y
     }));
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
