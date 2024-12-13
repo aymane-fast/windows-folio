@@ -6,7 +6,7 @@ function Icon({ name, onDoubleClick, initialPosition = { x: 0, y: 0 } }) {
   const [isDragging, setIsDragging] = useState(false);
   const iconRef = useRef(null);
   const dragStartPos = useRef({ x: 0, y: 0 });
-  const gridSize = 100;
+  const gridSize = 80;
 
   const handleMouseDown = (e) => {
     if (e.button !== 0) return; // Only left click
@@ -23,7 +23,12 @@ function Icon({ name, onDoubleClick, initialPosition = { x: 0, y: 0 } }) {
     if (!isDragging) return;
     const newX = e.clientX - dragStartPos.current.x;
     const newY = e.clientY - dragStartPos.current.y;
-    setPosition({ x: newX, y: newY });
+    
+    // Constrain to desktop bounds
+    const boundedX = Math.max(0, Math.min(newX, window.innerWidth - gridSize));
+    const boundedY = Math.max(0, Math.min(newY, window.innerHeight - 48 - gridSize));
+    
+    setPosition({ x: boundedX, y: boundedY });
   };
 
   const handleMouseUp = () => {

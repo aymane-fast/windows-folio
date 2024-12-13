@@ -3,13 +3,24 @@
   height: calc(100vh - 48px); /* Account for taskbar height */
   background: url('./windows11-background.jpg') no-repeat center center fixed;
   background-size: cover;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  grid-gap: 20px;
-  padding: 20px;
+  padding: 8px;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
+}
+
+/* Create invisible grid lines for snapping */
+.desktop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, transparent 79px, rgba(255,255,255,0.1) 80px),
+                    linear-gradient(to bottom, transparent 79px, rgba(255,255,255,0.1) 80px);
+  background-size: 80px 80px;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {

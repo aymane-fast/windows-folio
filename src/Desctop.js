@@ -9,9 +9,9 @@ function Desktop() {
   
   const icons = [
     { id: 'projects', name: 'Projects', initialPos: { x: 0, y: 0 } },
-    { id: 'cv', name: 'CV', initialPos: { x: 0, y: 100 } },
-    { id: 'skills', name: 'Skills', initialPos: { x: 0, y: 200 } },
-    { id: 'education', name: 'Education', initialPos: { x: 0, y: 300 } }
+    { id: 'cv', name: 'CV', initialPos: { x: 0, y: 80 } },
+    { id: 'skills', name: 'Skills', initialPos: { x: 0, y: 160 } },
+    { id: 'education', name: 'Education', initialPos: { x: 0, y: 240 } }
   ];
 
   const handleIconDoubleClick = (type) => {
