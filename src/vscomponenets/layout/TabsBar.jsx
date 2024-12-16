@@ -60,6 +60,9 @@ function TabsBar() {
       case 'closeAll':
         closeAllWindows()
         break
+      default:
+        // Handle default case or do nothing
+        break
     }
     handleCloseContextMenu()
   }

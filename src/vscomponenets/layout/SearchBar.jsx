@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   IconSearch, 
   IconRegex, 
@@ -11,7 +11,7 @@ import {
 } from '@tabler/icons-react';
 
 function SearchBar() {
-  const [searchText, setSearchText] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [replaceText, setReplaceText] = useState('');
   const [showReplace, setShowReplace] = useState(false);
   const [options, setOptions] = useState({
@@ -33,8 +33,8 @@ function SearchBar() {
         <div className="flex items-center gap-2 mb-2">
           <input
             type="text"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search"
             className="flex-1 bg-[#3c3c3c] text-[#cccccc] px-2 py-1 rounded border border-[#3c3c3c] focus:outline-none focus:border-[#007acc]"
           />
