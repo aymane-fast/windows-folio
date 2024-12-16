@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './css/StartMenu.css';
+import '../css/StartMenu.css';
 
 function StartMenu({ isOpen, onClose, onAppClick }) {
   const [searchQuery, setSearchQuery] = useState('');

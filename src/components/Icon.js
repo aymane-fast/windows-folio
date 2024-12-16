@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './css/Icon.css';
+import '../css/Icon.css';
 
 function Icon({ name, onDoubleClick, initialPosition = { x: 0, y: 0 } }) {
   const [position, setPosition] = useState(initialPosition);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './css/Taskbar.css';
+import '../css/Taskbar.css';
 import StartMenu from './StartMenu';
 
 function Taskbar({ windows, onTaskbarClick, onAppClick }) {

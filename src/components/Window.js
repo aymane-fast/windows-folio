@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
-import './css/Window.css';
-import CV from './content/CV';
-import VSCodeWindow from './components/VSCodeWindow';
+import '../css/Window.css';
+import CV from '../content/CV';
+import VSCodeWindow from '../vscomponenets/VSCodeWindow';
 
 function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore, isMaximized }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });

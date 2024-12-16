@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './css/Desktop.css';
+import '../css/Desktop.css';
 import Icon from './Icon';
 import Window from './Window';
 import Taskbar from './Taskbar';

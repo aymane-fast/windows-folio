@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Desktop from './Desctop';
+import Desktop from './components/Desctop';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { WindowProvider } from './contexts/WindowContext';
 
