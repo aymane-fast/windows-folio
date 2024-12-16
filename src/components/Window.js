@@ -6,7 +6,6 @@ import VSCodeWindow from '../vscomponenets/VSCodeWindow';
 
 function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore, isMaximized }) {
   const [position, setPosition] = useState({ x: 50, y: 50 });
-  const [size, setSize] = useState({ width: 800, height: 600 });
   const windowRef = useRef(null);
   const isMobile = window.innerWidth <= 768;
 
@@ -32,8 +31,8 @@ function Window({ title, onClose, isMinimized, onMinimize, onMaximize, onRestore
     display: isMinimized ? 'none' : 'block',
   } : {
     position: 'absolute',
-    width: `${size.width}px`,
-    height: `${size.height}px`,
+    width: '800px',
+    height: '600px',
     display: isMinimized ? 'none' : 'block',
   };
 

@@ -1,27 +1,11 @@
 // src/contexts/WindowContext.jsx
-import { createContext, useContext, useState , useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const WindowContext = createContext()
 
 export function WindowProvider({ children }) {
   const [windows, setWindows] = useState([])
   const [activeWindow, setActiveWindow] = useState(null)
-  const [cursorPosition, setCursorPosition] = useState({ line: 1, column: 1 })
-  const [spaceSize, setSpaceSize] = useState(2)
-
-
-  const updateCursorPosition = (line, column) => {
-    setCursorPosition({ 
-      line: Math.max(1, line), 
-      column: Math.max(1, column)
-    })
-  }
-
-  useEffect(() => {
-    updateCursorPosition(1, 1)
-  }, [activeWindow])
-
-
 
   const createWindow = (window) => {
     // Check if window already exists
@@ -151,15 +135,14 @@ export function WindowProvider({ children }) {
       closeOtherWindows,
       closeWindowsToRight,
       closeWindowsToLeft,
-      getWindowPosition,
-      updateCursorPosition
+      getWindowPosition
     }}>
       {children}
     </WindowContext.Provider>
   )
 }
 
-export function useWindow() {
+export const useWindow = () => {
   const context = useContext(WindowContext)
   if (!context) {
     throw new Error('useWindow must be used within a WindowProvider')
